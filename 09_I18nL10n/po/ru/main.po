@@ -1,0 +1,35 @@
+# Russian translations for  09_I18nL10n package
+# Английские переводы для пакета  09_I18nL10n.
+# Copyright (C) 2020 THE  09_I18nL10n'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the  09_I18nL10n package.
+# andriy <ankan2013@gmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  09_I18nL10n\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-25 22:51+0300\n"
+"PO-Revision-Date: 2020-12-25 21:06+0300\n"
+"Last-Translator: andriy <ankan2013@gmail.com>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: main.c:13
+#, c-format
+msgid "Choose integer x in range [1, 100]\n"
+msgstr "Выберите целое число x в диапазоне [1,100]\n"
+
+#: main.c:18
+#, c-format
+msgid "If your number >= %d, input 1, else input anything\n"
+msgstr "Если число больше >= %d, введите 1, иначе введите что угодно\n"
+
+#: main.c:32
+#, c-format
+msgid "The number is: %d\n"
+msgstr "Число: %d\n"
