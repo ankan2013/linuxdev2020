@@ -1,5 +1,6 @@
 GENERATES = prog prog-a prog-so README *.so
-TRASH = *.o *~ o.* *.a out*
+TRASH = *.o *~ o.* *.a
+LOG = log.txt
 
 all: README prog prog-a prog-so
 
@@ -9,9 +10,9 @@ test:
 	./prog-a >> out_2 && ./prog-a 1 >> out_2 && ./prog-a 1 2 3 >> out_2
 	./prog-so >> out_3 && ./prog-so 1 >> out_3 && ./prog-so 1 2 3 >> out_3
 
-	if cmp out_1 out_2; then print("prog and prog-a outputs differ"); fi
-	if cmp out_1 out_3; then print("prog and prog-so outputs differ"); fi
-	if cmp out_2 out_3; then print("prog-a and prog-so outputs differ"); fi
+	if cmp out_1 out_2; then echo("prog and prog-a outputs differ") > $(LOG); fi
+	if cmp out_1 out_3; then echo("prog and prog-so outputs differ") >> $(LOG); fi
+	if cmp out_2 out_3; then echo("prog-a and prog-so outputs differ") >> $(LOG); fi
 
 prog: const.o fun.o prog.o
 
@@ -25,17 +26,22 @@ libout.a: const.o fun.o
 	ar -rcs libout.a const.o fun.o
 
 liboutput.so: const.o fun.o
-	cc -fPIC -shared fun.o const.o -o libout.so
+	cc -fPIC fun.o -shared const.o -o libout.so
 
 README: prog
 	./$< 2> $@
 
 fun.o: outlib.h
 
-clean:
+clean: logclean trashclean genclean
+
+logclean:
+	rm -f $(LOG)
+
+trashclean:
 	rm -f $(TRASH)
 
-distclean: clean
+genclean:
 	rm -rf $(GENERATES)
 
 
